@@ -1,0 +1,5 @@
+ignore:
+  - "requirements/"
+  - "node_modules/"
+  - "tools/"
+  - "venv/"
