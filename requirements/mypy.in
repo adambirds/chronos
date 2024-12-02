@@ -3,3 +3,5 @@
 # and requirements/mypy.txt.
 # See requirements/README.md for more detail.
 mypy==1.13.0
+
+types-Pillow==10.2.0.20240822
