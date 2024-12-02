@@ -1,0 +1,51 @@
+name: Build chronos
+
+on: push
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        python-version:
+          - 3.6
+          - 3.7
+          - 3.8
+          - 3.9
+          - '3.10'
+          - '3.11'
+          - '3.12'
+          - '3.13'
+    name: Test and build chronos
+    runs-on: ubuntu-20.04
+    steps:
+    - uses: actions/checkout@master
+    - name: Set up Python
+      uses: actions/setup-python@v1
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Setup non-python dependencies.
+      run: |
+        sudo tools/setup/install-shellcheck
+        sudo tools/setup/install-shfmt
+    - name: Install Python dependencies
+      uses: py-actions/py-dependency-install@v2
+      with:
+        path: requirements/dev.txt
+    - name: Run unittests
+      run: |
+        pytest tests
+    - name: Run linters.
+      run: |
+        ./tools/lint
+    - name: Build a binary wheel and a source tarball
+      run: >-
+        python -m
+        build
+        --sdist
+        --wheel
+        --outdir dist/
+        .

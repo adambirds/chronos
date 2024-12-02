@@ -1,0 +1,71 @@
+name: Publish chronos to PyPI
+
+on: 
+  push:
+    branches:
+      - master
+  create:
+    tags:
+      - v*
+jobs:
+  test:
+    strategy:
+      matrix:
+        python-version:
+          - 3.6
+          - 3.7
+          - 3.8
+          - 3.9
+          - '3.10'
+          - '3.11'
+          - '3.12'
+          - '3.13'
+    runs-on: ubuntu-20.04
+    steps:
+    - uses: actions/checkout@master
+    - name: Set up Python
+      uses: actions/setup-python@v1
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Setup non-python dependencies.
+      run: |
+        sudo tools/setup/install-shellcheck
+        sudo tools/setup/install-shfmt
+    - name: Install Python dependencies
+      uses: py-actions/py-dependency-install@v2
+      with:
+        path: requirements/dev.txt
+    - name: Run unittests
+      run: |
+        pytest tests
+    - name: Run linters.
+      run: |
+        ./tools/lint
+  build-n-publish:
+    needs: test
+    name: Publish xkcd-pass to PyPI
+    runs-on: ubuntu-20.04
+    steps:
+    - uses: actions/checkout@master
+    - name: Set up Python
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.8
+    - name: Install Python dependencies
+      uses: py-actions/py-dependency-install@v2
+    - name: Build a binary wheel and a source tarball
+      run: >-
+        python -m
+        build
+        --sdist
+        --wheel
+        --outdir dist/
+        .
+      - name: Publish chronos to Test PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          repository_url: https://test.pypi.org/legacy/
+          skip_existing: true
+      - name: Publish chronos to PyPI
+        if: startsWith(github.ref, 'refs/tags')
+        uses: pypa/gh-action-pypi-publish@release/v1
