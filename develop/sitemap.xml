@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+         <loc>https://adambirds.github.io/chronos/develop/</loc>
+         <lastmod>2024-12-02</lastmod>
+    </url>
+    <url>
+         <loc>https://adambirds.github.io/chronos/develop/batch_timer/</loc>
+         <lastmod>2024-12-02</lastmod>
+    </url>
+    <url>
+         <loc>https://adambirds.github.io/chronos/develop/debug_timer/</loc>
+         <lastmod>2024-12-02</lastmod>
+    </url>
+    <url>
+         <loc>https://adambirds.github.io/chronos/develop/distributed_timer/</loc>
+         <lastmod>2024-12-02</lastmod>
+    </url>
+    <url>
+         <loc>https://adambirds.github.io/chronos/develop/timer/</loc>
+         <lastmod>2024-12-02</lastmod>
+    </url>
+    <url>
+         <loc>https://adambirds.github.io/chronos/develop/visual_timer/</loc>
+         <lastmod>2024-12-02</lastmod>
+    </url>
+</urlset>
