@@ -1,5 +1,7 @@
 from typing import List
+
 from chronos.base_timer import BaseChronosTimer
+
 
 class DistributedChronosTimer(BaseChronosTimer):
     def __init__(self, name: str = None, default_unit: str = "seconds"):

@@ -1,8 +1,8 @@
-from typing import Optional, Dict, Union
-import time
+import json
 import logging
 import threading
-import json
+import time
+from typing import Dict, Optional, Union
 
 
 class BaseChronosTimer:
@@ -44,7 +44,9 @@ class BaseChronosTimer:
             self._start_progress_reporting()
         return self
 
-    def __exit__(self, exc_type: Optional[type], exc_value: Optional[Exception], traceback: Optional[object]) -> None:
+    def __exit__(
+        self, exc_type: Optional[type], exc_value: Optional[Exception], traceback: Optional[object]
+    ) -> None:
         self.elapsed = time.perf_counter() - self.start_time
         self._stop_progress_reporting()
         self._print_and_log()
@@ -64,7 +66,9 @@ class BaseChronosTimer:
         while self._running:
             elapsed = time.perf_counter() - self.start_time
             converted = self._convert_time(elapsed, self.default_unit)
-            print(f"{self.name or 'Task'}: {converted:.2f} {self.default_unit} elapsed...", end="\r")
+            print(
+                f"{self.name or 'Task'}: {converted:.2f} {self.default_unit} elapsed...", end="\r"
+            )
             time.sleep(self.interval)
 
     def _convert_time(self, elapsed: float, unit: str) -> float:
@@ -81,7 +85,9 @@ class BaseChronosTimer:
 
     def _check_threshold(self) -> None:
         if self.threshold and self.elapsed > self.threshold:
-            print(f"WARNING: {self.name or 'Task'} exceeded the threshold of {self.threshold:.2f} seconds!")
+            print(
+                f"WARNING: {self.name or 'Task'} exceeded the threshold of {self.threshold:.2f} seconds!"
+            )
 
     def get_elapsed(self, unit: str = "seconds") -> float:
         if not self.elapsed:

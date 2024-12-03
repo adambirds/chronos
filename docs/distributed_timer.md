@@ -20,5 +20,5 @@ print(f"Total elapsed time: {timer.get_total_time('seconds')} seconds")
 
 ## Methods
 
-- **`add_timing(elapsed_time: float)`**: Add external timing data.
-- **`get_total_time(unit: str = "seconds")`**: Get the total elapsed time (local + external).
+-   **`add_timing(elapsed_time: float)`**: Add external timing data.
+-   **`get_total_time(unit: str = "seconds")`**: Get the total elapsed time (local + external).

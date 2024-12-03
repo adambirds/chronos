@@ -1,9 +1,11 @@
 import setuptools
 
+
 # Function to parse requirements.txt
 def parse_requirements(filename):
     with open(filename, "r") as f:
         return f.read().splitlines()
+
 
 with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()

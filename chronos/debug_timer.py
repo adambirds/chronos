@@ -1,6 +1,8 @@
 import signal
-from chronos.timer import ChronosTimer
 import time
+
+from chronos.timer import ChronosTimer
+
 
 class DebuggingChronosTimer(ChronosTimer):
     def __enter__(self):

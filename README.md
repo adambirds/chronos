@@ -4,12 +4,12 @@ Chronos is a Python library for advanced task timing, performance monitoring, an
 
 ## Features
 
-- **Base Timer**: Core functionality for timing tasks with unit conversion, logging, and threshold warnings.
-- **ChronosTimer**: A basic timer with all core features.
-- **DistributedChronosTimer**: Aggregate timing data across distributed systems.
-- **BatchChronosTimer**: Time multiple tasks and compute aggregate statistics.
-- **DebuggingChronosTimer**: Pause and resume timers during debugging sessions.
-- **ChronosTimerWithVisualization**: Real-time ASCII progress bars for task timing.
+-   **Base Timer**: Core functionality for timing tasks with unit conversion, logging, and threshold warnings.
+-   **ChronosTimer**: A basic timer with all core features.
+-   **DistributedChronosTimer**: Aggregate timing data across distributed systems.
+-   **BatchChronosTimer**: Time multiple tasks and compute aggregate statistics.
+-   **DebuggingChronosTimer**: Pause and resume timers during debugging sessions.
+-   **ChronosTimerWithVisualization**: Real-time ASCII progress bars for task timing.
 
 ---
 
@@ -26,6 +26,7 @@ pip install chronos-context-timer
 ## Usage Examples
 
 ### Basic Timer
+
 ```python
 from chronos import ChronosTimer
 
@@ -38,6 +39,7 @@ print(f"Task completed in {timer.get_elapsed('seconds')} seconds")
 ```
 
 ### Distributed Timer
+
 ```python
 from chronos import DistributedChronosTimer
 
@@ -53,6 +55,7 @@ print(f"Total elapsed time: {timer.get_total_time('seconds')} seconds")
 ```
 
 ### Batch Timer
+
 ```python
 from chronos import BatchChronosTimer
 
@@ -70,6 +73,7 @@ print(f"Total time: {stats['total_time']} seconds")
 ```
 
 ### Debugging Timer
+
 ```python
 from chronos import DebuggingChronosTimer
 
@@ -78,6 +82,7 @@ with DebuggingChronosTimer("Debug Task") as timer:
 ```
 
 ### Timer with Visualization
+
 ```python
 from chronos import ChronosTimerWithVisualization
 
@@ -91,6 +96,7 @@ with ChronosTimerWithVisualization("Visualized Task", interval=0.2, threshold=5)
 ## Development
 
 ### Running Tests
+
 Run all tests using pytest:
 
 ```bash
@@ -98,6 +104,7 @@ pytest tests/
 ```
 
 ### Type Checking
+
 Chronos is fully type-checked using `mypy`. To run type checks:
 
 ```bash
@@ -115,4 +122,3 @@ Chronos is licensed under the MIT License. See [LICENSE](LICENSE) for details.
 ## Documentation
 
 Complete documentation is available at [https://adambirds.github.io/chronos/](https://adambirds.github.io/chronos/)
-

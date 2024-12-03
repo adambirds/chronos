@@ -1,6 +1,8 @@
-from chronos.timer import ChronosTimer
 import sys
 import time
+
+from chronos.timer import ChronosTimer
+
 
 class ChronosTimerWithVisualization(ChronosTimer):
     def _report_progress(self):

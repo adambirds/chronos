@@ -22,5 +22,5 @@ print(f"Total time: {stats['total_time']} seconds")
 
 ## Methods
 
-- **`time_task(task: callable, *args, **kwargs)`**: Time a single task and store the elapsed time.
-- **`get_statistics(unit: str = "seconds")`**: Return aggregate statistics for the batch.
+-   **`time_task(task: callable, \*args, **kwargs)`\*\*: Time a single task and store the elapsed time.
+-   **`get_statistics(unit: str = "seconds")`**: Return aggregate statistics for the batch.

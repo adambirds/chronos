@@ -1,8 +1,10 @@
-from chronos.batch_timer import BatchChronosTimer
 import time
 
-def test_batch_timer():
-    def task():
+from chronos.batch_timer import BatchChronosTimer
+
+
+def test_batch_timer() -> None:
+    def task() -> None:
         time.sleep(0.5)
 
     batch_timer = BatchChronosTimer("Batch Test")

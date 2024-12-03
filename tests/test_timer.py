@@ -1,5 +1,7 @@
-from chronos.timer import ChronosTimer
 import time
+
+from chronos.timer import ChronosTimer
+
 
 def test_basic_timer():
     with ChronosTimer("Basic Test") as timer:
