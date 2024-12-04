@@ -2,7 +2,7 @@ import time
 
 from pytest import CaptureFixture
 
-from chronos.base_timer import BaseChronosTimer
+from src.chronos.base_timer import BaseChronosTimer
 
 
 def test_base_timer_basic() -> None:
