@@ -1,7 +1,7 @@
 from statistics import mean, median
 from typing import Any, Callable, Dict, List, Optional
 
-from chronos.base_timer import BaseChronosTimer
+from src.chronos.base_timer import BaseChronosTimer
 
 
 class BatchChronosTimer:

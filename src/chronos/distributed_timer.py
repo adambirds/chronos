@@ -1,6 +1,6 @@
 from typing import List, Optional
 
-from chronos.base_timer import BaseChronosTimer
+from src.chronos.base_timer import BaseChronosTimer
 
 
 class DistributedChronosTimer(BaseChronosTimer):

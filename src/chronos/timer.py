@@ -1,4 +1,4 @@
-from chronos.base_timer import BaseChronosTimer
+from src.chronos.base_timer import BaseChronosTimer
 
 
 class ChronosTimer(BaseChronosTimer):
