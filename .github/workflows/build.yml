@@ -36,7 +36,7 @@ jobs:
         pytest tests
     - name: Run linters.
       run: |
-        ./tools/lint
+        tools/lint
     - name: Build a binary wheel and a source tarball
       run: >-
         python -m
