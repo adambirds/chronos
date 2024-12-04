@@ -47,12 +47,16 @@ class BaseChronosTimer:
     def __exit__(
         self, exc_type: Optional[type], exc_value: Optional[Exception], traceback: Optional[object]
     ) -> None:
+        if self.start_time is None:
+            raise RuntimeError("Timer was never started.")
         self.elapsed = time.perf_counter() - self.start_time
         self._stop_progress_reporting()
         self._print_and_log()
         self._check_threshold()
 
     def _start_progress_reporting(self) -> None:
+        if self.interval is None:
+            raise ValueError("Interval must be set to enable progress reporting.")
         self._running = True
         self._thread = threading.Thread(target=self._report_progress)
         self._thread.start()
@@ -63,12 +67,16 @@ class BaseChronosTimer:
             self._thread.join()
 
     def _report_progress(self) -> None:
+        if self.start_time is None:
+            raise RuntimeError("Timer was never started.")
         while self._running:
             elapsed = time.perf_counter() - self.start_time
             converted = self._convert_time(elapsed, self.default_unit)
             print(
                 f"{self.name or 'Task'}: {converted:.2f} {self.default_unit} elapsed...", end="\r"
             )
+            if self.interval is None:
+                raise ValueError("Interval must be set for progress reporting.")
             time.sleep(self.interval)
 
     def _convert_time(self, elapsed: float, unit: str) -> float:
@@ -77,6 +85,8 @@ class BaseChronosTimer:
         return elapsed * self.UNITS[unit]
 
     def _print_and_log(self) -> None:
+        if self.elapsed is None:
+            raise RuntimeError("Timer was never stopped.")
         converted = self._convert_time(self.elapsed, self.default_unit)
         message = f"{self.name or 'Task'} completed in {converted:.2f} {self.default_unit}"
         print(message)
@@ -84,13 +94,17 @@ class BaseChronosTimer:
             logging.info(message)
 
     def _check_threshold(self) -> None:
-        if self.threshold and self.elapsed > self.threshold:
+        if (
+            self.threshold is not None
+            and self.elapsed is not None
+            and self.elapsed > self.threshold
+        ):
             print(
                 f"WARNING: {self.name or 'Task'} exceeded the threshold of {self.threshold:.2f} seconds!"
             )
 
     def get_elapsed(self, unit: str = "seconds") -> float:
-        if not self.elapsed:
+        if self.elapsed is None:
             raise RuntimeError("Timer has not finished yet.")
         return self._convert_time(self.elapsed, unit)
 

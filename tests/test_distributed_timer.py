@@ -3,7 +3,7 @@ import time
 from chronos.distributed_timer import DistributedChronosTimer
 
 
-def test_distributed_timer():
+def test_distributed_timer() -> None:
     with DistributedChronosTimer("Distributed Test") as timer:
         time.sleep(1)
     timer.add_timing(0.5)

@@ -115,10 +115,10 @@ mypy chronos/
 
 ## License
 
-Chronos is licensed under the MIT License. See [LICENSE](LICENSE) for details.
+Chronos is licensed under the MIT License. See [LICENSE](/LICENSE) for details.
 
 ---
 
 ## Documentation
 
-Complete documentation is available at [https://adambirds.github.io/chronos/](https://adambirds.github.io/chronos/)
+Complete documentation is available [here](https://github.com/adambirds/chronos).

@@ -2,7 +2,7 @@ import setuptools
 
 
 # Function to parse requirements.txt
-def parse_requirements(filename):
+def parse_requirements(filename: str) -> list[str]:
     with open(filename, "r") as f:
         return f.read().splitlines()
 
