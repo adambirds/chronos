@@ -4,7 +4,7 @@ from __future__ import absolute_import, print_function
 import argparse
 import re
 
-from .lib.custom_check import non_py_rules
+from lib.custom_check import non_py_rules
 from zulint.command import LinterConfig, add_default_linter_arguments
 from zulint.custom_rules import RuleList
 from zulint.linters import run_command

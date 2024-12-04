@@ -1,6 +1,6 @@
 import time
 
-from chronos.batch_timer import BatchChronosTimer
+from src.chronos.batch_timer import BatchChronosTimer
 
 
 def test_batch_timer() -> None:

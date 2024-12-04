@@ -1,6 +1,6 @@
 import time
 
-from chronos.timer import ChronosTimer
+from src.chronos.timer import ChronosTimer
 
 
 def test_basic_timer() -> None:

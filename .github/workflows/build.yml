@@ -33,10 +33,10 @@ jobs:
         path: requirements/dev.txt
     - name: Run unittests
       run: |
-        pytest tests
+        PYTHONPATH=src pytest
     - name: Run linters.
       run: |
-        tools/lint
+        ./tools/lint
     - name: Build a binary wheel and a source tarball
       run: >-
         python -m

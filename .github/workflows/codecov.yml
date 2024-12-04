@@ -30,7 +30,7 @@ jobs:
         path: requirements/dev.txt
     - name: Generate coverage report
       run: |
-        pytest --cov=./ --cov-report=xml
+        PYTHONPATH=src pytest --cov=./ --cov-report=xml
     - name: Run linters.
       run: |
         ./tools/lint

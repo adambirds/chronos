@@ -1,6 +1,6 @@
 import time
 
-from chronos.distributed_timer import DistributedChronosTimer
+from src.chronos.distributed_timer import DistributedChronosTimer
 
 
 def test_distributed_timer() -> None:
