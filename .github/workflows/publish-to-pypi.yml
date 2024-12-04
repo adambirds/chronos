@@ -62,11 +62,11 @@ jobs:
         --wheel
         --outdir dist/
         .
-      - name: Publish chronos to Test PyPI
-        uses: pypa/gh-action-pypi-publish@release/v1
-        with:
-          repository_url: https://test.pypi.org/legacy/
-          skip_existing: true
-      - name: Publish chronos to PyPI
-        if: startsWith(github.ref, 'refs/tags')
-        uses: pypa/gh-action-pypi-publish@release/v1
+    - name: Publish chronos to Test PyPI
+      uses: pypa/gh-action-pypi-publish@release/v1
+      with:
+        repository_url: https://test.pypi.org/legacy/
+        skip_existing: true
+    - name: Publish chronos to PyPI
+      if: startsWith(github.ref, 'refs/tags')
+      uses: pypa/gh-action-pypi-publish@release/v1
