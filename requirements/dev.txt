@@ -853,6 +853,10 @@ tinycss2==1.4.0 \
     # via
     #   cairosvg
     #   cssselect2
+tomli==1.1.0 \
+    --hash=sha256:33d7984738f8bb699c9b0a816eb646a8178a69eaa792d258486776a5d21b8ca5 \
+    --hash=sha256:f4a182048010e89cbec0ae4686b21f550a7f2903f665e34a6de58ec15424f919
+    # via -r /Users/adam.birds/Development/AdamBirds/chronos/requirements/common.in
 types-pillow==10.2.0.20240822 \
     --hash=sha256:559fb52a2ef991c326e4a0d20accb3bb63a7ba8d40eb493e0ecb0310ba52f0d3 \
     --hash=sha256:d9dab025aba07aeb12fd50a6799d4eac52a9603488eca09d7662543983f16c5d

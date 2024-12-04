@@ -631,6 +631,10 @@ tinycss2==1.4.0 \
     # via
     #   cairosvg
     #   cssselect2
+tomli==1.1.0 \
+    --hash=sha256:33d7984738f8bb699c9b0a816eb646a8178a69eaa792d258486776a5d21b8ca5 \
+    --hash=sha256:f4a182048010e89cbec0ae4686b21f550a7f2903f665e34a6de58ec15424f919
+    # via -r /Users/adam.birds/Development/AdamBirds/chronos/requirements/common.in
 urllib3==2.2.3 \
     --hash=sha256:ca899ca043dcb1bafa3e262d73aa25c465bfb49e0bd9dd5d59f1d0acba2f8fac \
     --hash=sha256:e7d814a81dad81e6caf2ec9fdedb284ecc9c73076b62654547cc64ccdcae26e9
