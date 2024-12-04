@@ -11,7 +11,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="chronos",
+    name="chronos-context-timer",
     version="1.0.0",
     author="Adam Birds",
     author_email="adam.birds@adbwebdesigns.co.uk",
@@ -33,8 +33,8 @@ setuptools.setup(
         "Programming Language :: Python :: 3.12",
         "Operating System :: OS Independent",
     ],
-    package_dir={"": "src"},
-    packages=setuptools.find_packages(where="src"),
+    package_dir={"chronos": "src/chronos"},
+    packages=["chronos"],
     include_package_data=True,
     python_requires=">=3.6",
     install_requires=parse_requirements("requirements/prod.txt"),
