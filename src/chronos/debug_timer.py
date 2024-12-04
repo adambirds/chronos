@@ -2,7 +2,7 @@ import signal
 import time
 from typing import Any, Optional
 
-from chronos.timer import ChronosTimer
+from src.chronos.timer import ChronosTimer
 
 
 class DebuggingChronosTimer(ChronosTimer):

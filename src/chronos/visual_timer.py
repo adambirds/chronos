@@ -1,7 +1,7 @@
 import sys
 import time
 
-from chronos.timer import ChronosTimer
+from src.chronos.timer import ChronosTimer
 
 
 class ChronosTimerWithVisualization(ChronosTimer):
