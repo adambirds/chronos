@@ -28,6 +28,9 @@ jobs:
       uses: py-actions/py-dependency-install@v2
       with:
         path: requirements/dev.txt
+    - name: Install node dependencies
+      run: |
+        npm install
     - name: Generate coverage report
       run: |
         PYTHONPATH=src pytest --cov=./ --cov-report=xml
