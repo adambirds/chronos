@@ -18,15 +18,14 @@ jobs:
           - '3.12'
     runs-on: ubuntu-20.04
     steps:
-    - uses: actions/checkout@master
+    - uses: actions/checkout@v3
       with:
         fetch-depth: 0
-        ref: ${{ github.ref_name }}
     - name: Set up Python
-      uses: actions/setup-python@v1
+      uses: actions/setup-python@v4
       with:
         python-version: ${{ matrix.python-version }}
-    - name: Setup non-python dependencies.
+    - name: Setup non-python dependencies
       run: |
         sudo tools/setup/install-shellcheck
         sudo tools/setup/install-shfmt
@@ -40,41 +39,58 @@ jobs:
     - name: Run unittests
       run: |
         PYTHONPATH=src pytest
-    - name: Run linters.
+    - name: Run linters
       run: |
         ./tools/lint
+
   build-n-publish:
     needs: test
-    name: Publish chronos to PyPI
+    name: Build and Publish chronos
     runs-on: ubuntu-20.04
     permissions:
       id-token: write
     steps:
-    - uses: actions/checkout@master
+    - uses: actions/checkout@v3
       with:
         fetch-depth: 0
-        ref: ${{ github.ref_name }}
     - name: Set up Python
-      uses: actions/setup-python@v1
+      uses: actions/setup-python@v4
       with:
         python-version: 3.12
     - name: Install Python dependencies
       uses: py-actions/py-dependency-install@v2
       with:
         path: requirements/dev.txt
-    - name: Build a binary wheel and a source tarball
-      run: >-
-        python -m
-        build
-        --sdist
-        --wheel
-        --outdir dist/
-        .
-    - name: Publish chronos to Test PyPI
+
+    # Step to ensure clean build artifacts
+    - name: Clean up previous build artifacts
+      run: |
+        rm -rf dist/ build/ *.egg-info
+
+    # Step to build distribution for Test PyPI
+    - name: Build for Test PyPI
+      run: |
+        python -m build --sdist --wheel --outdir dist/
+
+    # Step to publish to Test PyPI
+    - name: Publish to Test PyPI
       uses: pypa/gh-action-pypi-publish@release/v1
       with:
         repository-url: https://test.pypi.org/legacy/
         skip-existing: true
-    - name: Publish chronos to PyPI
+
+    # Clean up again before building for PyPI
+    - name: Clean up before PyPI build
+      run: |
+        rm -rf dist/ build/ *.egg-info
+
+    # Step to build distribution for PyPI
+    - name: Build for PyPI
+      if: startsWith(github.ref, 'refs/tags')
+      run: |
+        python -m build --sdist --wheel --outdir dist/
+
+    # Step to publish to PyPI
+    - name: Publish to PyPI
       if: startsWith(github.ref, 'refs/tags')
       uses: pypa/gh-action-pypi-publish@release/v1
