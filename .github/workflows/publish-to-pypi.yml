@@ -52,6 +52,8 @@ jobs:
         python-version: 3.8
     - name: Install Python dependencies
       uses: py-actions/py-dependency-install@v2
+      with:
+        path: requirements/dev.txt
     - name: Build a binary wheel and a source tarball
       run: >-
         python -m
